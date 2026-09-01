@@ -1,0 +1,8 @@
+SITE DE DESCULPAS PARA CAROL
+
+Como usar:
+1. Extraia este ZIP.
+2. Abra o arquivo index.html em um navegador.
+3. Para enviar para ela, hospede a pasta em um serviço de páginas estáticas (GitHub Pages, Netlify, Vercel etc.).
+
+A música e a foto já estão dentro da pasta assets.
