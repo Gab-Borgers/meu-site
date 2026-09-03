@@ -1,49 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#120b13">
-  <title>Nossas fotos — para a minha Carol ❤️</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#120b13">
+<title>Nossos momentos juntos — Carol ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="galeria.css">
 </head>
-<body>
-  <div class="hearts" aria-hidden="true"></div>
+<body class="galeria-body">
+<div class="hearts" aria-hidden="true"></div>
 
-  <main>
-    <section class="gallery-hero">
-      <a class="back-link" href="index.html">← voltar</a>
-      <p class="eyebrow">só nós dois</p>
-      <h1>Nossos<br><span>momentos.</span></h1>
-      <p class="intro">
-        Cada foto dessa é um motivo pra eu não querer te perder de vista de
-        novo. Olha quanta coisa boa a gente já viveu.
-      </p>
-    </section>
+<main class="baralho-main">
 
-    <section class="gallery-grid">
-      <figure><img src="assets/galeria/foto1.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto3.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto7.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto8.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto4.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto6.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto2.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto5.jpg" alt="Você e eu" loading="lazy"></figure>
-      <figure><img src="assets/galeria/foto9.jpg" alt="Você e eu" loading="lazy"></figure>
-    </section>
+  <a class="back-link" href="index.html">← voltar</a>
 
-    <section class="final">
-      <div class="tiny-heart">♡</div>
-      <h2>Quero mais fotos<br>como essas.</h2>
-      <p>Com você, do jeito certo, prestando atenção em quem importa.</p>
-      <a class="back-link big" href="index.html">← voltar pro início</a>
-    </section>
-  </main>
+  <p class="baralho-eyebrow">nossos momentos juntos</p>
 
-  <script src="script.js"></script>
+  <div class="baralho" id="baralho">
+
+    <article class="carta" data-index="0">
+      <button class="carta-foto-btn" type="button" aria-label="Ampliar foto">
+        <span class="carta-glow" aria-hidden="true"></span>
+        <img class="carta-foto" src="assets/fotos/primeira_foto_juntos.jpeg" alt="Primeira foto juntos">
+      </button>
+      <p class="carta-legenda">Nossa primeira foto juntos</p>
+    </article>
+
+    <article class="carta" data-index="1">
+      <button class="carta-foto-btn" type="button" aria-label="Ampliar foto">
+        <span class="carta-glow" aria-hidden="true"></span>
+        <img class="carta-foto" src="assets/fotos/nosso_primeiro_contato.jpeg" alt="Nosso primeiro contato">
+      </button>
+      <p class="carta-legenda">Nosso primeiro contato</p>
+    </article>
+
+    <article class="carta" data-index="2">
+      <button class="carta-foto-btn" type="button" aria-label="Ampliar foto">
+        <span class="carta-glow" aria-hidden="true"></span>
+        <img class="carta-foto" src="assets/fotos/minha_foto_favorita_da_carol.jpeg" alt="Minha foto favorita sua">
+      </button>
+      <p class="carta-legenda">Minha foto favorita sua</p>
+    </article>
+
+    <article class="carta" data-index="3">
+      <button class="carta-foto-btn" type="button" aria-label="Ampliar foto">
+        <span class="carta-glow" aria-hidden="true"></span>
+        <img class="carta-foto" src="assets/fotos/spider_couple.jpeg" alt="Casal aranha">
+      </button>
+      <p class="carta-legenda">Casal aranha 🕷️</p>
+    </article>
+
+    <article class="carta" data-index="4">
+      <button class="carta-foto-btn" type="button" aria-label="Ampliar foto">
+        <span class="carta-glow" aria-hidden="true"></span>
+        <img class="carta-foto" src="assets/fotos/e_o_kiko.jpeg" alt="Eu, você e o Kiko">
+      </button>
+      <p class="carta-legenda">Eu, você... e o Kiko</p>
+    </article>
+
+    <article class="carta" data-index="5">
+      <button class="carta-foto-btn" type="button" aria-label="Ampliar foto">
+        <span class="carta-glow" aria-hidden="true"></span>
+        <img class="carta-foto" src="assets/fotos/darkness.jpeg" alt="Foto no escuro, sorrindo">
+      </button>
+      <p class="carta-legenda">Modo noturno ativado</p>
+    </article>
+
+  </div>
+
+  <div class="baralho-controles">
+    <button class="baralho-btn" id="btnAnterior" type="button" aria-label="Foto anterior">←</button>
+    <div class="baralho-pontos" id="baralhoPontos" aria-hidden="true"></div>
+    <button class="baralho-btn" id="btnProxima" type="button" aria-label="Próxima foto">→</button>
+  </div>
+
+  <p class="baralho-dica">arraste ou toque nas setas para passar as fotos</p>
+
+</main>
+
+<div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
+  <span class="zoom-glow" aria-hidden="true"></span>
+  <img class="zoom-img" id="zoomImg" src="" alt="">
+</div>
+
+<script src="script.js"></script>
+<script src="galeria.js"></script>
 </body>
 </html>

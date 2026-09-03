@@ -1,0 +1,89 @@
+/* ===== mobile.css =====
+   Camada de ajustes para telas pequenas. Carregado DEPOIS do
+   style.css original, então essas regras só entram em ação
+   quando fazem sentido (min/max-width) e não apagam nada do
+   arquivo principal. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* tipografia fluida: acompanha a largura da tela sem estourar */
+.hero h1 {
+  font-size: clamp(1.9rem, 8vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.letter h2,
+.promise h2,
+.final h2 {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  line-height: 1.25;
+}
+
+.intro,
+.letter-text p,
+.promise p,
+.final p {
+  font-size: clamp(0.95rem, 4vw, 1.05rem);
+  line-height: 1.6;
+}
+
+/* área de toque confortável pros botões/links no celular */
+.music-btn,
+.gallery-link,
+.back-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.gallery-link,
+.back-link {
+  display: inline-flex;
+}
+
+section {
+  padding-top: clamp(32px, 8vh, 64px);
+  padding-bottom: clamp(32px, 8vh, 64px);
+}
+
+.photo-wrap img {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+  .music-btn,
+  .gallery-link {
+    width: 100%;
+  }
+}
+
+@media (min-width: 700px) {
+  main {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+}

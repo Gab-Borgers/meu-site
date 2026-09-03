@@ -1,0 +1,278 @@
+/* ===== galeria.css =====
+   Estilos exclusivos da galeria (baralho de cartas + zoom).
+   Fica em arquivo separado de propósito, pra não sobrescrever
+   nada que já exista no seu style.css original. */
+
+:root {
+  --g-bg: #120b13;
+  --g-ink: #f6ece7;
+  --g-muted: #cbb7c2;
+  --g-accent: #e8628f;
+  --g-accent-2: #8b6bff;
+  --g-card-bg: #1c1220;
+  --g-shadow: rgba(0, 0, 0, 0.55);
+}
+
+.galeria-body {
+  background: var(--g-bg);
+  min-height: 100vh;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 20px 0 4px 20px;
+  color: var(--g-muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  opacity: 1;
+  color: var(--g-accent);
+}
+
+.baralho-main {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 8px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.baralho-eyebrow {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--g-muted);
+  margin: 10px 0 22px;
+}
+
+/* ---- o baralho ---- */
+
+.baralho {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 3 / 4;
+  touch-action: pan-y;
+}
+
+.carta {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 22px;
+  background: var(--g-card-bg);
+  box-shadow: 0 18px 40px var(--g-shadow);
+  overflow: hidden;
+  will-change: transform, opacity;
+  transition: transform 0.35s cubic-bezier(.2, .8, .2, 1), opacity 0.35s ease;
+}
+
+.carta-foto-btn {
+  position: relative;
+  flex: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carta-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+
+.carta-foto-btn:active .carta-foto {
+  transform: scale(1.03);
+}
+
+.carta-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, var(--g-accent-2) 0%, transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carta-legenda {
+  padding: 14px 16px 18px;
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.98rem;
+  color: var(--g-ink);
+  background: linear-gradient(180deg, var(--g-card-bg), #241726);
+}
+
+/* estados de pilha: carta ativa, próxima, anterior, escondida */
+.carta[data-state="active"] {
+  transform: translateX(0) rotate(0deg) scale(1);
+  opacity: 1;
+  z-index: 3;
+}
+
+.carta[data-state="next"] {
+  transform: translateY(10px) rotate(3deg) scale(0.94);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.carta[data-state="prev"] {
+  transform: translateY(10px) rotate(-3deg) scale(0.94);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.carta[data-state="hidden"] {
+  transform: translateY(14px) scale(0.9);
+  opacity: 0;
+  z-index: 1;
+}
+
+.carta.dragging {
+  transition: none;
+}
+
+/* ---- controles ---- */
+
+.baralho-controles {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.baralho-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(246, 236, 231, 0.25);
+  background: transparent;
+  color: var(--g-ink);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.baralho-btn:hover,
+.baralho-btn:focus-visible {
+  background: rgba(232, 98, 143, 0.18);
+  border-color: var(--g-accent);
+}
+
+.baralho-btn:active {
+  transform: scale(0.92);
+}
+
+.baralho-pontos {
+  display: flex;
+  gap: 7px;
+}
+
+.baralho-pontos span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(246, 236, 231, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.baralho-pontos span.ativo {
+  background: var(--g-accent);
+  transform: scale(1.3);
+}
+
+.baralho-dica {
+  margin-top: 16px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  color: var(--g-muted);
+  opacity: 0.75;
+}
+
+/* ---- overlay de zoom com brilho ---- */
+
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 3, 8, 0);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  z-index: 50;
+  padding: 24px;
+}
+
+.zoom-overlay.aberto {
+  background: rgba(6, 3, 8, 0.82);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.zoom-glow {
+  position: absolute;
+  width: min(80vw, 420px);
+  height: min(80vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--g-accent-2) 0%, var(--g-accent) 45%, transparent 72%);
+  filter: blur(38px);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.zoom-overlay.aberto .zoom-glow {
+  opacity: 0.55;
+  transform: scale(1);
+}
+
+.zoom-img {
+  position: relative;
+  max-width: min(88vw, 420px);
+  max-height: 78vh;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  transform: scale(0.9);
+  transition: transform 0.35s cubic-bezier(.2, .8, .2, 1);
+}
+
+.zoom-overlay.aberto .zoom-img {
+  transform: scale(1);
+}
+
+@media (min-width: 560px) {
+  .baralho-main {
+    padding-top: 24px;
+  }
+  .baralho {
+    max-width: 340px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carta,
+  .carta-foto,
+  .zoom-overlay,
+  .zoom-glow,
+  .zoom-img,
+  .baralho-btn,
+  .baralho-pontos span {
+    transition: none !important;
+  }
+}

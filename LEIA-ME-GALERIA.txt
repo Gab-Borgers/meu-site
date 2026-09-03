@@ -1,0 +1,43 @@
+O QUE MUDOU
+
+Arquivos novos:
+- galeria.html   -> substitui o antigo, agora é um baralho de cartas deslizável
+- galeria.css    -> estilo só da galeria (não mexe no seu style.css)
+- galeria.js     -> lógica do baralho, arrastar/deslizar e o zoom com brilho
+- mobile.css     -> ajustes pra ficar confortável no celular (aplique em
+                    qualquer página, já plugado no index.html e perdao.html)
+- assets/fotos/  -> as 6 fotos que você mandou
+
+Arquivos atualizados:
+- index.html   -> agora só tem UM link pra galeria ("Nossos momentos juntos →"),
+                  removi o "Ver nossas fotos" duplicado, e carrega o mobile.css
+- perdao.html  -> só ganhou o mobile.css, o resto continua igual
+
+COMO INSTALAR
+
+1. Jogue todos esses arquivos dentro da pasta do seu projeto (mesma pasta
+   que já tem o style.css e o script.js), substituindo o galeria.html,
+   index.html e perdao.html antigos.
+2. Confira se a pasta assets/fotos/ ficou dentro de assets/ (ou seja:
+   assets/fotos/primeira_foto_juntos.jpeg etc).
+3. Abra o index.html no navegador e testa.
+
+PERSONALIZANDO
+
+- Legendas das fotos: abra o galeria.html e edite o texto dentro de cada
+  <p class="carta-legenda">...</p>. Coloquei legendas provisórias com base
+  nos nomes dos arquivos — troque pelo que você quiser dizer sobre cada foto.
+- Ordem das fotos: é só reordenar os blocos <article class="carta">...
+  </article> dentro do galeria.html.
+- Cores do zoom/brilho: no topo do galeria.css, as variáveis --g-accent e
+  --g-accent-2 controlam a cor do brilho e dos detalhes.
+- Se seu style.css original já tiver cores diferentes (não era #120b13,
+  por exemplo), me manda o conteúdo dele que eu ajusto o galeria.css e o
+  mobile.css pra combinar certinho.
+
+COMO USAR A GALERIA
+
+- Arraste a carta de cima pra esquerda/direita (ou use as setas/teclado)
+  para passar as fotos.
+- Toque na foto (sem arrastar) para dar o zoom com brilho atrás.
+- Toque em qualquer lugar fora da foto ampliada para voltar ao normal.
